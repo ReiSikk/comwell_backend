@@ -12,4 +12,9 @@ export class HotelsController {
     return this.hotelsService.getHotels();
   }
 
+  @Get(':id/rooms')
+  getHotelWithRooms(@Param('id') id: string): Promise<Hotel> {
+    return this.hotelsService.getHotelWithRooms(id);
+  }
+
 }
