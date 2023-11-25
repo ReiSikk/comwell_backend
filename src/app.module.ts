@@ -3,14 +3,14 @@ import { AppController } from './app.controller';
 import { HotelsModule } from './hotels/hotels.module';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RoomsController } from './rooms/rooms.controller';
-import { RoomsService } from './rooms/rooms.service';
 import { RoomsModule } from './rooms/rooms.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb://localhost/comwell'), 
-  HotelsModule, RoomsModule],
+  HotelsModule, RoomsModule, UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
