@@ -17,7 +17,9 @@ export class AuthService {
           return {
             success: true,
             access_token: await this.jwtService.signAsync(payload),
-            user: user.fullName
+            user: user.fullName,
+            email: user.username,
+            phone: user.phone,
           };
         } else {
           throw new UnauthorizedException({success: false, message: 'Invalid credentials' });
