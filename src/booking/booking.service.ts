@@ -26,10 +26,10 @@ export class BookingService {
       throw new NotFoundException('User not found');
     }
 
-    const existingBooking = await this.bookingModel.findOne({ guestEmail: createBookingDto.guestEmail });
+  /*   const existingBooking = await this.bookingModel.findOne({ guestEmail: createBookingDto.guestEmail });
     if (existingBooking) {
       throw new ConflictException('Booking already exists for this email');
-    }
+    } */
 
     
 
