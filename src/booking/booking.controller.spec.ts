@@ -3,6 +3,7 @@ import { BookingController } from './booking.controller';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from '../booking/create-booking.dto';
 import { Types } from 'mongoose';
+import { HttpStatus } from '@nestjs/common';
 
 describe('BookingController', () => {
   let controller: BookingController;
@@ -44,7 +45,11 @@ describe('BookingController', () => {
       checkOut: '2022-01-02T00:00:00.000Z',
       userId: new Types.ObjectId('605c6f7e3103e60004d2d4a2')
     }; 
-    expect(await controller.create(createBookingDto)).toBe('mockBooking');
+    expect(await controller.create(createBookingDto)).toEqual({
+      statusCode: HttpStatus.CREATED,
+      message: 'Booking created successfully!',
+      data: 'mockBooking',
+    });
     expect(service.create).toHaveBeenCalledWith(createBookingDto);
   });
 

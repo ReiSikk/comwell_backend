@@ -31,7 +31,7 @@ export class BookingService {
       checkOut: { $gt: createBookingDto.checkIn },
      });
     if (existingBooking) {
-      throw new ConflictException('Booking already exists for this room');
+      throw new ConflictException('Unable to create booking. A booking already exists for this room');
     }
 
     
