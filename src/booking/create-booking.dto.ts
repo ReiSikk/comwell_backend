@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsString, IsNumber, IsEmail } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsEmail, IsMongoId } from 'class-validator';
+import { Types } from 'mongoose';
 
 export class CreateBookingDto {
 
@@ -33,6 +34,10 @@ export class CreateBookingDto {
 
     @IsNotEmpty({ message: 'Please select a check out date to create booking'})
      checkOut: string;
+     
+
+     @IsMongoId()
+     userId: Types.ObjectId;
 
 
   }

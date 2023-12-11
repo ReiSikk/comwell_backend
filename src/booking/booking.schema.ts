@@ -37,6 +37,8 @@ export class Booking {
   @Prop()
    checkOut: string;
 
+  
+
 
 }
 
