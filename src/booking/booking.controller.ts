@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, HttpStatus } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './create-booking.dto';
 
@@ -8,7 +8,12 @@ export class BookingController {
 
   @Post()
   async create(@Body() createBookingDto: CreateBookingDto) {
-    return this.bookingService.create(createBookingDto);
+    const booking = await this.bookingService.create(createBookingDto);
+    return {
+      statusCode: HttpStatus.CREATED,
+      message: 'Booking created successfully!',
+      data: booking,
+    }
   }
 
   @Get('user/:userId')

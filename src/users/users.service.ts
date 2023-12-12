@@ -12,7 +12,6 @@ export class UsersService {
     const existingUser = await this.userModel.findOne({ username: createUserDto.username });
 
     if (existingUser) {
- 
       throw new ConflictException('Username is already taken');
     }
 

@@ -22,13 +22,16 @@ export class BookingService {
 
   async create(createBookingDto: CreateBookingDto): Promise<Booking> {
     const user = await this.userModel.findOne({ username: createBookingDto.guestEmail });
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
 
-    const existingBooking = await this.bookingModel.findOne({ guestEmail: createBookingDto.guestEmail });
+
+    const existingBooking = await this.bookingModel.findOne({ 
+      guestEmail: createBookingDto.guestEmail,
+      selectedRoom: createBookingDto.selectedRoom,
+      checkIn: { $lt: createBookingDto.checkOut },
+      checkOut: { $gt: createBookingDto.checkIn },
+     });
     if (existingBooking) {
-      throw new ConflictException('Booking already exists for this email');
+      throw new ConflictException('Unable to create booking. A booking already exists for this room');
     }
 
     
@@ -54,8 +57,11 @@ export class BookingService {
         roomPrice: createBookingDto.roomPrice,
         checkIn: createBookingDto.checkIn,
         checkOut: createBookingDto.checkOut,
-        user: user._id,
+        userId: user._id,  
+
     });
+
+  
     return createdBooking.save();
   }
 
