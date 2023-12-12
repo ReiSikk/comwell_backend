@@ -22,7 +22,7 @@ export class BookingService {
 
   async create(createBookingDto: CreateBookingDto): Promise<Booking> {
     const user = await this.userModel.findOne({ username: createBookingDto.guestEmail });
-    
+
 
     const existingBooking = await this.bookingModel.findOne({ 
       guestEmail: createBookingDto.guestEmail,

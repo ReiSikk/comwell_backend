@@ -19,10 +19,10 @@ export class Booking {
   @Prop()
   guestPhone: string;
 
-  @Prop()
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Hotel' })
   selectedHotel: string;
 
-  @Prop()
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Room' })
   selectedRoom: string;
 
   @Prop()
