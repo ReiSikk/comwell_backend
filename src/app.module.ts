@@ -16,8 +16,4 @@ import { BookingModule } from './booking/booking.module';
   providers: [AppService],
 })
 
-//export class AppModule implements NestModule {
- // configure(consumer: MiddlewareConsumer) {
-  //  consumer.apply(RolesMiddleware).forRoutes('*');
-  //}
 export class AppModule {}

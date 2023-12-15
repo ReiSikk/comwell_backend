@@ -19,8 +19,8 @@ export class User {
   @Prop()
   password: string;
 
-  @Prop({ type: [{ type: String, enum: ['user', 'admin'] }] })
-  roles: string[];
+  @Prop({ type: [String], enum: ['user', 'admin'] })
+roles: string[];
 
 }
 
