@@ -20,6 +20,9 @@ export class Room {
   @Prop()
   facilities: Array<string>;
 
+  @Prop()
+  price: number;
+
 }
 
 export const RoomSchema = SchemaFactory.createForClass(Room);
