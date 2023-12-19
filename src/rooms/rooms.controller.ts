@@ -14,7 +14,6 @@ export class RoomsController {
   }
 
   @Put(':id')
-  @UsePipes(new ValidationPipe({ skipMissingProperties: false }))
   updateRoom(@Param('id') id: string,  @Body() updateRoomDto: UpdateRoomDto): Promise<Room> {
       return this.roomsService.updateRoom(id, updateRoomDto);
   }
