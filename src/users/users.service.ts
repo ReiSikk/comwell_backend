@@ -17,6 +17,10 @@ export class UsersService {
 
 
     const user = new this.userModel(createUserDto);
+if (createUserDto.username.includes('@comwell.dk')) {
+user.role = 'admin';
+}
+
     return user.save();
   }
 

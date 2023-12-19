@@ -20,6 +20,7 @@ export class AuthService {
             user: user.fullName,
             email: user.username,
             phone: user.phone,
+            role: user.role,
           };
         } else {
           throw new UnauthorizedException({success: false, message: 'Invalid credentials' });

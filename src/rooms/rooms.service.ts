@@ -12,6 +12,11 @@ export class RoomsService {
     return await this.roomModel.findById(id).exec();
   }
 
+  async deleteRoom(id: string): Promise<void> {
+    await this.roomModel.findByIdAndDelete(id).exec();
+  }
+
+
   async updateRoom(id: string, updateRoomDto: UpdateRoomDto): Promise<Room> {
     return await this.roomModel.findByIdAndUpdate(id, updateRoomDto, { new: true }).exec();
   }

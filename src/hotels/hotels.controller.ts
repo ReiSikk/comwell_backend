@@ -2,6 +2,7 @@ import { Controller, Get, Post, Delete, Body, Param, Put, UseGuards, } from '@ne
 import { HotelsService } from './hotels.service';
 import { Hotel } from './hotel.schema';
 
+
 @Controller('hotels')
 export class HotelsController {
   constructor(private readonly hotelsService: HotelsService) {} // Inject the HotelsService
@@ -16,5 +17,6 @@ export class HotelsController {
   getHotelWithRooms(@Param('id') id: string): Promise<Hotel> {
     return this.hotelsService.getHotelWithRooms(id);
   }
+
 
 }
