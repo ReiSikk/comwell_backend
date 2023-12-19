@@ -10,4 +10,10 @@ export class RoomsService {
   async getRoom(id: string): Promise<Room> {
     return await this.roomModel.findById(id).exec();
   }
+
+  async deleteRoom(id: string): Promise<void> {
+    await this.roomModel.findByIdAndDelete(id).exec();
+  }
+
+
 }
