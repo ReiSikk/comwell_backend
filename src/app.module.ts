@@ -15,4 +15,5 @@ import { BookingModule } from './booking/booking.module';
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
