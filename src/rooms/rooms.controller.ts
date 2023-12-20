@@ -19,6 +19,7 @@ export class RoomsController {
   @Delete(':id')
   deleteRoom(@Param('id') id: string): Promise<void> {
     return this.roomsService.deleteRoom(id);
+  }
 
   @Put(':id')
   updateRoom(@Param('id') id: string,  @Body() updateRoomDto: UpdateRoomDto): Promise<Room> {
