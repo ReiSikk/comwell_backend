@@ -47,6 +47,37 @@ export class BookingService {
       throw new NotFoundException('Room not found');
     }
 
+    interface BookingData {
+      guest: string;
+      guestEmail: string;
+      guestPhone: number;
+      selectedHotel: any;
+      selectedRoom: any;
+      roomType: string;
+      roomPrice: string;
+      checkIn: string;
+      checkOut: string;
+      userId?: any;  // Add this line
+    }
+
+    //describe the data that will be saved to the database
+    let bookingData: BookingData = {
+      guest: createBookingDto.guest,
+      guestEmail: createBookingDto.guestEmail,
+      guestPhone: createBookingDto.guestPhone,
+      selectedHotel: hotel._id,
+      selectedRoom: room._id,
+      roomType: createBookingDto.roomType,
+      roomPrice: createBookingDto.roomPrice,
+      checkIn: createBookingDto.checkIn,
+      checkOut: createBookingDto.checkOut,
+    };
+
+    //if user exists, add the user id to the booking data
+    if (user) {
+      bookingData.userId = user._id;
+    }
+
     const createdBooking = new this.bookingModel({
         guest: createBookingDto.guest,
         guestEmail: createBookingDto.guestEmail,
@@ -57,13 +88,11 @@ export class BookingService {
         roomPrice: createBookingDto.roomPrice,
         checkIn: createBookingDto.checkIn,
         checkOut: createBookingDto.checkOut,
-        userId: user._id,  
 
     });
 
-  
+ 
     return createdBooking.save();
   }
 
-  // Add other methods as needed...
 }
