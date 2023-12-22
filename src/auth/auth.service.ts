@@ -13,7 +13,7 @@ export class AuthService {
     async signIn(username: string, password: string): Promise<any> {
         const user = await this.usersService.findOne(username);
         if (user && await bcrypt.compare(password, user.password)) {
-          const payload = { username: user.username };
+          const payload = { username: user.username, role: user.role };
           return {
             success: true,
             access_token: await this.jwtService.signAsync(payload),

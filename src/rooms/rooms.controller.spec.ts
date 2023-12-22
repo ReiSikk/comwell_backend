@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RoomsController } from './rooms.controller';
 import { RoomsService } from './rooms.service'
+import { JwtService } from '@nestjs/jwt'
 
 import { Room } from './room.schema';
 
@@ -15,10 +16,17 @@ describe('RoomsController', () => {
         useValue: {
           getRoom: jest.fn().mockResolvedValue({
             _id: 'mockId',
-            // Other room properties here...
           }),
         },
-      }],
+      }, 
+      {
+        provide: JwtService, 
+        useValue: {
+          sign: jest.fn().mockResolvedValue('mockToken'),
+        },
+
+      }
+    ],
     }).compile();
 
     controller = module.get<RoomsController>(RoomsController);

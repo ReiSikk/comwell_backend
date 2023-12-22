@@ -17,7 +17,8 @@ describe('BookingService', () => {
     fullName: 'John Doe',
     phone: 1234567890,
     username: 'johndoe@gmail.com',
-    password: ''
+    password: '',
+    role: 'user',
   };
 
   beforeEach(async () => {

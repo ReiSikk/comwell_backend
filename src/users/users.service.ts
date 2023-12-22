@@ -1,4 +1,4 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import { Injectable, ConflictException, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './user.schema';
@@ -18,7 +18,7 @@ export class UsersService {
 
     const user = new this.userModel(createUserDto);
 if (createUserDto.username.includes('@comwell.dk')) {
-user.role = 'admin';
+     user.role = 'admin';
 }
 
     return user.save();
